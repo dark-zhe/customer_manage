@@ -1,0 +1,18 @@
+#spring:
+#  datasource:
+#    druid:
+#      url: jdbc:mysql://localhost:3306/customer_manage?serverTimezone=GMT%2B8
+#      username: root
+#      password: root
+#      driverClassName: com.mysql.cj.jdbc.Driver
+spring:
+  datasource:
+    druid:
+      db-type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/customer_manage?serverTimezone=GMT%2B8
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  type-aliases-package: com.turing.customermanage.pojo
+  mapper-locations: mapper/*.xml
