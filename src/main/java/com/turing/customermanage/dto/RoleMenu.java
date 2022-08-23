@@ -1,4 +1,4 @@
-package com.turing.customermanage.pojo;
+package com.turing.customermanage.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Role {
-    private Integer rid;
-    private String rname;
+public class RoleMenu {
     private Integer level;
+    private String mid;
 }
