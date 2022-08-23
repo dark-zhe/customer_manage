@@ -15,9 +15,9 @@ public class UserController {
     private UserService userService;
 
 
-    @PostMapping("/login/{uname}/{password}")
-    public void login(@PathVariable String uname, @PathVariable String password, HttpServletRequest request, HttpServletResponse response){
-        System.out.println("111");
+    @GetMapping("/login/{uname}/{password}")
+    public void login(@PathVariable("uname")String uname, @PathVariable("password")String password, HttpServletRequest request, HttpServletResponse response){
+        System.out.println("________________________________________________________");
         System.out.println(userService.login(uname,password));
     }
 }

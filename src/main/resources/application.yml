@@ -17,3 +17,4 @@ spring:
 # mybatis
 mybatis:
   type-aliases-package: com.turing.customermanage.pojo
+  mapper-locations: classpath=com/turing/customermanage/mapper/*.xml
