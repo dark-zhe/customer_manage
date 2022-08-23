@@ -4,4 +4,12 @@
     <select id="login" resultType="com.turing.customermanage.pojo.User">
         select * from user where uname=#{uname} and password=#{password}
     </select>
+
+    <select id="selectList" resultType="com.turing.customermanage.pojo.User">
+        select * from user
+    </select>
+
+    <insert id="addUser" parameterType="com.turing.customermanage.pojo.User">
+        insert into user values(null,#{uname},#{password},#{status})
+    </insert>
 </mapper>

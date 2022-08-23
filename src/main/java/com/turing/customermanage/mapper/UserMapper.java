@@ -11,5 +11,9 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    List<User> login(String uname, String password);
+    User login(String uname, String password);
+
+    List<User> selectList();
+
+    User addUser(User user);
 }

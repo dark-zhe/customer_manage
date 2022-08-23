@@ -6,11 +6,54 @@
 </head>
 <body>
 <div>
+
   <input name="username" type="text" placeholder="用户名">
 </div>
 <form>
   <input name="username" type="text" placeholder="用户名">
   <input type="submit"/>
 </form>
+
+<div>
+    <div class="loginText" style="margin-top: 20px;">
+        <button onclick="butSubmit()"> buttonsss</button>
+    </div>
+
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script>
+    function butSubmit() {
+        var dog = {"eyes":"eye",
+            "ages":1 }
+        var dog1 = {"eyes":"eye1",
+            "ages":2 }
+        var dogList = new Array();
+        dogList.push(dog);
+        dogList.push(dog1);
+
+        console.log(dogList)
+        var zoo = {"eyes":"eyes",
+            "ages":2,
+            "dogList":dogList
+
+        }
+
+
+        $.ajax({
+            url: 'http://127.0.0.1:2024//view/roster/RosterController/inSertRoter2',
+            type: 'post',
+            headers:{'Content-Type': 'application/json'},//设置请求头
+            dataType:'json',
+            data: JSON.stringify(zoo),
+            success: function(data) {
+                if(data) {
+                    alert(data)
+                } else {
+                    alert(data)
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>
