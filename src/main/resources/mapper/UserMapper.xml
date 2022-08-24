@@ -10,6 +10,6 @@
     </select>
 
     <insert id="addUser" parameterType="com.turing.customermanage.pojo.User">
-        insert into user values(null,#{uname},#{password},#{status})
+        insert into user values(null,#{uname},#{password},0)
     </insert>
 </mapper>

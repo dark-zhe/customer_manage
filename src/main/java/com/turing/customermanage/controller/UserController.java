@@ -11,26 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RequestMapping("user")
-@RestController
+@Controller
 public class UserController {
     @Autowired
     private UserService userService;
 
     @GetMapping("/login/{uname}/{password}")
     //@ResponseBody
-    public User login(@PathVariable("uname")String uname, @PathVariable("password")String password, HttpServletRequest request, HttpServletResponse response){
+    public User login(@PathVariable("uname") String uname, @PathVariable("password") String password, HttpServletRequest request, HttpServletResponse response) {
         System.out.println("________________________________________________________");
         User user = userService.login(uname, password);
         System.out.println(user);
         return user;
     }
+
     @PostMapping("findAll")
-    public List<User> selectList(){
+    public List<User> selectList() {
         return userService.selectList();
     }
-    @PostMapping("/addUser")
-    public User addUser(User user){
-        User user1 = userService.addUser(user);
-        return user1;
+
+    @RequestMapping ("/addUser")
+    public boolean addUser(@RequestBody User user) {
+        System.out.println(user);
+        User user1=userService.addUser(user);
+        return user!=null;
     }
 }
