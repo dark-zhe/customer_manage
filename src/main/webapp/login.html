@@ -17,9 +17,17 @@
             //window.location.href="user/findAll";
         }
     </script>
-    <input id="3" type="text" name="uid" placeholder="uid:">
-    <input id="1" type="text" name="uname" placeholder="name:">
-    <input id="2" type="text" name="password" placeholder="password:">
+    <form action="user/updateUser" method="post">
+        <input id="3" type="text" name="uid" placeholder="uid:">
+        <input id="1" type="text" name="uname" placeholder="name:">
+        <input id="2" type="text" name="password" placeholder="password:">
+        <input type="submit" value="form表单提交">
+<!--        <input type="button" value="提交" onclick="login() ">-->
+    </form>
+
+    <input id="4" type="text" name="uid" placeholder="uid:">
+    <input id="5" type="text" name="uname" placeholder="name:">
+    <input id="6" type="text" name="password" placeholder="password:">
     <input type="button" value="提交" onclick="login() ">
 </form>
 </body>

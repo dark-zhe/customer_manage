@@ -49,10 +49,11 @@ public class UserController {
         return res;
     }
     //改
-    @GetMapping("/updateUser/{uid}/{uname}/{password}")
-    public boolean updateUser(@PathVariable("uid") Integer uid,
-                              @PathVariable("uname") String uname,
-                              @PathVariable("password") String password){
+    //@RequestMapping(value = "/updateUser",method = RequestMethod.POST)
+    @PostMapping("/updateUser")
+    public boolean updateUser(@RequestParam("uid") Integer uid,
+                              @RequestParam("uname") String uname,
+                              @RequestParam("password") String password){
         boolean res = userService.updateUser(uid,uname,password);
         System.out.println(res);
         return res;
