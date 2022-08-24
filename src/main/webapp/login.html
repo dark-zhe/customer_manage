@@ -8,14 +8,19 @@
 <form>
     <script>
         function login(){
+            var uid=document.getElementsByName("uid")[0].value;
             var uname=document.getElementsByName("uname")[0].value;
             var password=document.getElementsByName("password")[0].value;
-            window.location.href="user/login/"+uname+"/"+password;
+            //window.location.href="user/login/"+uname+"/"+password;
+            //window.location.href="user/updateUser/"+uid+"/"+uname+"/"+password;
+            //window.location.href="user/deleteUser/"+uid;
+            //window.location.href="user/findAll";
         }
     </script>
+    <input id="3" type="text" name="uid" placeholder="uid:">
     <input id="1" type="text" name="uname" placeholder="name:">
     <input id="2" type="text" name="password" placeholder="password:">
-    <input type="button" value="提交" onclick="login()">
+    <input type="button" value="提交" onclick="login() ">
 </form>
 </body>
 </html>
