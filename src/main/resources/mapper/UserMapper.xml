@@ -16,21 +16,6 @@
         insert into user values(null,#{uname},#{password},0)
     </insert>
 
-    <select id="authorityCheck1" resultType="string">
-        select mid from roles_menus
-        where level =
-              (select level from role
-              where rid =
-                    (select rid from users_roles where uid = #{uid}))
-
-    </select>
-
-    <select id="authorityCheck2" resultType="com.turing.customermanage.pojo.Menu">
-        select * from menu where mid in
-        <foreach collection="array" index="index" item="mid" open="(" separator="," close=")">
-            #{mid}
-        </foreach>
-    </select>
 
     <delete id="deleteUser" parameterType="integer">
         delete from user where uid = #{uid}

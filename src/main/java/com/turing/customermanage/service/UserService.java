@@ -11,12 +11,11 @@ public interface UserService {
     //查询所有user
     List<User> selectList();
 
-    User addUser(User user);
 
-
-    List<Menu> authorityCheck1(User user);
 
     boolean deleteUser(Integer uid);
 
     boolean updateUser(Integer uid,String uname, String password);
+
+    int addUser(String uname, String password);
 }

@@ -2,43 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="/js/axios-0.18.0.js"></script>
+    <script src="/js/vuejs-2.5.16.js"></script>
 </head>
 <body>
-<form id="form01">
-    <input name="username" type="text" placeholder="用户名">
-    <input name="password" type="text" placeholder="密码">
-    <input type="submit" value="提交"/>
+<form id="form02">
+    <input type="text" name="uname" placeholder="用户名：">
+    <input type="text" name="password" placeholder="密码：">
+    <a href="" @click.prevent="add()">保存</a>
 </form>
-<el-form ref="form" :model="form" label-width="80px">
-    <el-form-item label="用户名">
-        <el-input v-model="form.name"></el-input>
-    </el-form-item>
-    <el-form-item label="密码">
-        <el-input v-model="form.password"></el-input>
-    </el-form-item>
-    <el-form-item>
-        <el-button type="primary" @click="onSubmit">添加</el-button>
-        <el-button>取消</el-button>
-    </el-form-item>
-</el-form>
 <script>
-    export default {
-        data() {
-            return {
-                form: {
-                    name: '',
-                    password:''
-                }
-            }
+    var vm3 = new Vue({
+        el: "#form02",
+        data: {
+            uid: {}
         },
         methods: {
-            onSubmit() {
-                console.log('submit!');
+            add() {
+                alert("ddd");
+                var uname = document.getElementsByName("uname")[0].value;
+                var password = document.getElementsByName("password")[0].value;
+                axios.get("user/addUser/" + uname + "/" + password).then(response => {
+                    if (response.data === true){
+                        alert("aa");
+                        window.location.href = '/main.html/?uid=' + vm3.uid;
+                    }else {
+                        alert("bb");
+                    }
+                    alert("ccc");
+                });
             }
+        },
+        created() {
+            this.uid = location.search.replace(/[^\d]/g, "");
         }
-    }
+    })
 </script>
 </body>
 </html>

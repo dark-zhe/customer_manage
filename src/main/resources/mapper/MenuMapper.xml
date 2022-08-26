@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.turing.customermanage.mapper.MenuMapper">
+    <select id="findMids" resultType="String">
+        select mid
+        from roles_menus
+        where level =
+              (select level
+               from role
+               where rid =
+                     (select rid from users_roles where uid = #{uid}))
+    </select>
+    <select id="findMenus" resultType="Menu">
+        select * from menu where mid in
+        <foreach collection="array" index="index" item="mid" open="(" separator="," close=")">
+            #{mid}
+        </foreach>
+        order by pid
+    </select>
+</mapper>

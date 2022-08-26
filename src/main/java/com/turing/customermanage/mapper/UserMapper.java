@@ -16,13 +16,9 @@ public interface UserMapper {
 
     List<User> selectList();
 
-    User addUser(User user);
-
-    String authorityCheck1(User user);
-
-    List<Menu> authorityCheck2(String[] split);
-
     boolean deleteUser(Integer uid);
 
     boolean updateUser(Integer uid,String uname, String password);
+
+    int addUser(String uname, String password);
 }

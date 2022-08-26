@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/axios-0.18.0.js"></script>
+    <script src="/js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+<div>
+    <div id="left">
+        <table v-for="menu in menus">
+            <tr>
+                <td>
+                    <a href="" v-html="menu.mname" @click.prevent="url(menu.url)"></a>
+                    <span v-html="menu.url"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="right">
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td>密码</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="user in users">
+                <td><p v-html="user.uname"></p></td>
+                <td><p v-html="user.password"></p></td>
+                <td><a href="" @click.prevent="update(user.uid)">修改</a></td>
+                <td><a href="" @click.prevent="del(user.uid)">删除</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    var vm1 = new Vue({
+        el: "#left",
+        data: {
+            menus: [],
+            uid: {},
+            users: []
+        },
+        methods: {
+            url(url) {
+                if (url === "addUser") {
+                    window.location.href="/addUser.html/?uid="+vm1.uid;
+                }
+                if (url === "findAll") {
+                    axios.get("menu/" + url).then(response => {
+                        vm1.users = response.data;
+                    });
+                }
+                if (url === "findMe") {
+                    axios.get("menu/" + url + "/" + vm1.uid).then(response => {
+                        vm1.users = response.data;
+                    });
+                }
+            }
+        },
+        created() {
+            var uid = location.search.replace(/[^\d]/g, "");
+            axios.get("/menu/findMenus/" + uid).then(response => {
+                vm1.uid = uid;
+                vm1.menus = response.data;
+            });
+        }
+    });
+</script>
+<script>
+    var vm2 = new Vue({
+        el: "#right",
+        data: {}
+    })
+</script>
+</body>
+</html>

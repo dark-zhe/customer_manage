@@ -12,4 +12,5 @@ public class Menu {
     private Integer pid;
     private Integer type;
     private String mname;
+    private String url;
 }

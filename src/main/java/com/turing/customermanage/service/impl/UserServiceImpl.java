@@ -26,16 +26,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUser(User user) {
-        return userMapper.addUser(user);
+    public int addUser(String uname, String password) {
+        return userMapper.addUser(uname,password);
     }
 
-    @Override
-    public List<Menu> authorityCheck1(User user) {
-        String mid = userMapper.authorityCheck1(user);
-        String[] split = mid.split(",");
-        return userMapper.authorityCheck2(split);
-    }
 
     @Override
     public boolean deleteUser(Integer uid) {
